@@ -3,7 +3,7 @@ from odoo import models, fields, api
 class StockPicking(models.Model):
     _inherit = 'stock.picking'
     estudiante_id = fields.Many2one(
-        'colegio.estudiante',
+        comodel_name='colegio.estudiante',
         string="Estudiante"
     )
     
