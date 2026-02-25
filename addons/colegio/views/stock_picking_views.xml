@@ -7,6 +7,6 @@
             <xpath expr="//field[@name='origin']" position="after">
                 <field name="estudiante_id" readonly="1"/>
             </xpath>
-        </field>   
+        </field>
     </record>
 </odoo>

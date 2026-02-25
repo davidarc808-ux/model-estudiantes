@@ -1,17 +1,14 @@
 from odoo import models, fields, api
 
 class StockPicking(models.Model):
+    # Heredamos el modelo de transferencias (albaranes)
     _inherit = 'stock.picking'
+
+    # 1. Creamos el mismo campo Many2one que tenemos en la Sale Order
     estudiante_id = fields.Many2one(
-        comodel_name='colegio.estudiante',
-        string="Estudiante"
+        'colegio.estudiante', 
+        string="Estudiante",
+        related='sale_id.estudiante_id',
+        store=True
     )
-    
-class SaleOrder(models.Model):
-    _inherit = 'sale.order'
-    
-    def _prepare_picking(self):
-        res = super(SaleOrder, self)._prepare_picking()
-        res['estudiante_id'] = self.estudiante_id.id 
-        return res
-    
+
